@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
+        <style>
+            #content {
+                background: rgb(0, 250, 250,0.1);
+                border: 3px solid teal;
+                border-radius: 8px;
+                box-shadow: 5px 5px 10px rgb(32, 178, 170,0.8);
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 50px auto;
+                max-width: 1000px;
+                padding: 25px;
+                text-align: center;
+            }
+
+            h1 {
+                color: teal;
+                font-family: 'Braah One', sans-serif;
+                transition: all 220ms ease-in-out;
+            }
+
+            h1:hover {
+                font-size: 40px;
+            }
+
+            hr {
+                border: 1px solid teal;
+                margin: 25px 0;
+            }
+
+            img {
+                border-radius: 8px;
+                transition: all 220ms ease-in-out;
+            }
+
+            img:hover{
+                height: 400px;
+            }
+
+            #list {
+                margin: 0 auto;
+                width: 450px;
+            }
+
+            ul {
+                list-style: none;
+                font-size: smaller;
+                text-align: left;
+            }
+
+            li {
+                line-height: 30px;
+                transition: all 220ms ease-in-out;
+            }
+
+            li:hover {
+                font-size: larger;
+                font-weight: bold;
+            }
+
+            button {
+                background: rgb(255, 182, 193, 0.5);
+                border: 2px solid teal;
+                border-radius: 25px;
+                box-shadow: 0 1px 20px rgb(0, 128, 128, 0.5);
+                color: teal;
+                cursor: pointer;
+                padding: 10px 25px;
+                font-size: x-large;
+                transition: all 220ms ease-in-out;
+            }
+
+            button:hover {
+                background: rgb(221, 62, 86);
+                box-shadow: 2px 5px 20px rgb(0, 128, 128);
+                color: rgb(240, 240, 240);
+            }
+
+            #disclaimer {
+                font-size: x-small;
+            }
+
+        </style>
+        <title>FrozenLove</title>
+    </head>
+    <body>
+        <div id="content">
+            <h1>FrozenYoghurt topped with smarties!</h1>
+            <h2>Isn't that everyone one's favourite?</h2>
+            <hr>
+            <img src="https://img.restaurantguru.com/r548-Yolicious-Frozen-Yogurt-dessert-2021-09-2.jpg" alt="frozen-yoghurt" height="350">
+            <hr>
+            <h3>Ever cared about some FroYo-facts? <br>No? Here you go!</h3>
+            <div id="list">
+                <ul>
+                    <li><strong>Fact #01:</strong>  Yogurt Has Been Around For, Like, Forever</li>
+                    <li><strong>Fact #02:</strong> Fro-Yo is Actually Pretty New</li>
+                    <li><strong>Fact #03:</strong> Frozen Yogurt Used to be Sold Only in Scoops</li>
+                    <li><strong>Fact #04:</strong> There Used to Be Popsicle Fro-Yo</li>
+                    <li><strong>Fact #05:</strong> Fro-Yo Contains (Good) Bacteria </li>
+                    <li><strong>Fact #06:</strong> Frozen Yogurt Leaves Your Mouth Smelling Fresh</li>
+                    <li><strong>Fact #07:</strong> Frozen Yogurt Doesn’t Necessarily Come From Cows</li>
+                    <li><strong>Fact #08:</strong> Frozen Yogurt Has A Lot of Vitamins </li>
+                    <li><strong>Fact #09:</strong> Frozen Yogurt Can Become a Weight Loss Strategy </li>
+                    <li><strong>Fact #10:</strong> There is a Whole Month to Celebrate Frozen Yogurt</li>
+                    <li><strong>Fact #11:</strong> Frozen Yogurt Has Its Own Day Too</li>
+                    <li><strong>Fact #12:</strong> Fro-Yo Used to go by Fro-Gurt</li>
+                    <li><strong>Fact #13:</strong> Sakura Was the First-Ever Black Fro-Yo Flavor</li>
+                    <li><strong>Fact #14:</strong> There is a Frozen Yogurt Machine in the Supreme Court Cafeteria</li>
+                    <li><strong>Fact #15:</strong> Android Has a Codename Named Fro-Yo</li>
+                </ul>
+            </div>
+            <p>
+                Wanna check for the actual facts? Click <a href="https://16handles.com/16-fun-facts-about-frozen-yogurt/" target="_blank">here</a>!
+                <hr>
+                Got hungry and want to treat me a large FroYo with smarties?
+                <br>
+                Click down below!
+            </p>
+            <button>Treat me!</button>
+            <p id="disclaimer">This project is not to be taken serious. It's created solely to document the SheCodes Basic course achievments and <br> was coded by <i>Ria Sommerfeld</i>.</p>
+        </div>
+    </body>
+    <script>
+        let btn = document.querySelector("button");
+        
+        function greetUser(){
+            let h1 = document.querySelector("h1");
+            let h2 = document.querySelector("h2");
+            let name = prompt("What is your name, Sweetheart?");
+            let agreeAns = prompt("Do you agree with me upon FroYo with smarties? (yes/no)").toLowerCase().trim();
+
+            if(agreeAns === "yes"){
+                h1.innerHTML = `Guess I was right! You rock!`;
+                h2.innerHTML = `Thanks very much, ${name}! I really appreciate that! <br> Now go treat yourself!`;
+            } else {
+                let disagreeAns = prompt("What is your favourite topping?");
+                h1.innerHTML = `Guess I was wrong... But ${disagreeAns} is a great choice as well!`;
+                h2.innerHTML = `Thanks very much, ${name}! I really appreciate that! <br> Now go treat yourself!`;
+            }
+        }
+
+        btn.addEventListener("click", greetUser);
+    </script>
+</html>
