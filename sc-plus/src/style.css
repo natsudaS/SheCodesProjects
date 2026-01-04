@@ -1,0 +1,50 @@
+body {
+  background-color: whitesmoke;
+}
+
+.app {
+  margin: 20px auto;
+  max-width: 650px;
+}
+
+.app_frame {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 5px 5px rgb(192, 192, 192);
+  margin: 0 auto;
+  max-width: 650px;
+  padding: 10px;
+}
+
+header #search-bar {
+  border: 1.5px solid #0d6efd;
+  border-radius: 25px;
+}
+
+header .search-btns {
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.current_section {
+  margin: 30px 5px;
+  padding: 10px;
+}
+
+.card_section {
+  border: 1px solid black;
+  border-radius: 4px;
+  margin: 10px 0 0 0;
+  padding: 10px;
+}
+
+.forcastCard {
+  margin: 0 2px;
+}
+
+footer {
+  font-family: monospace;
+  font-size: 12px;
+  margin-top: 10px;
+}
