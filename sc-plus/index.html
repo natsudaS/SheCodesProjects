@@ -21,7 +21,7 @@
 <body>
   <div class="app">
     <div class="app_frame">
-      <p id="units" class="d-flex justify-content-end"><a href="#" onclick="convertToMetric()" class="link-dark px-1">Metric</a> | <a href="#" onclick="convertToImperial()" class="link-dark px-1">Imperial</a> </p>
+      <!-- <p id="units" class="d-flex justify-content-end"><a href="#" onclick="convertToMetric()" class="link-dark px-1">Metric</a> | <a href="#" onclick="convertToImperial()" class="link-dark px-1">Imperial</a> </p> -->
       <header>
         <form class="d-flex" role="search">
           <input class="form-control me-2" id="search-bar" type="search" placeholder="Enter City..." aria-label="Search">
@@ -38,11 +38,11 @@
               <h1 id="city">Berlin</h1>
               <!-- make time responsive to the city -->
               <p><span id="weekday">...</span> <span id="time">...</span> <br> <span id="date">...</span></p>
-              <p><span id="weather">...</span></p>
-              <p><span id="humidity">...</span>%  <span id="wind">...</span></p>
+              <p><span id="desc">...</span></p>
+              <p>Humidity: <span id="humidity" color="red">...</span>,  Wind: <span id="wind" color="red">...</span></p>
             </div>
             <div class="col">
-              <h1> <!-- wettericon hinzufügen --> <br> <span id="temp">...</span></h1>
+              <h1> <img id="icon" src=""> <span id="temp">   ...</span></h1>
             </div>
           </div>
         </div>

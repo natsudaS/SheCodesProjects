@@ -1,6 +1,10 @@
 // Global variables
 let city = document.querySelector("h1#city");
 let temp_span = document.querySelector("span#temp");
+let desc_span = document.querySelector("span#desc");
+let icon_img = document.querySelector("img#icon");
+let humidity_span = document.querySelector("span#humidity");
+let wind_span = document.querySelector("span#wind");
 let apiKey = "373bf32o76t9d30da8a5693c914460f3";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.innerHTML}&key=${apiKey}&units=metric`;
 
@@ -24,16 +28,25 @@ function showCurrentDate(){
 showCurrentDate();
 
 
-// Aktuelle Temperatur anzeigen
-function showCurrentTemp(response){
-  console.log("showCurrentTemp() called");
+// Aktuelle Temperatur, Wetterbeschreibung und Icon anzeigen
+function showCurrentWeather(response){
+  console.log("showCurrentWeather() called");
+  console.log(response);
   let temperature = response.data.temperature.current;
-  console.log(temperature); 
+  let weather_description = response.data.condition.description; 
+  let weather_icon = response.data.condition.icon_url; 
+  let humidity = response.data.temperature.humidity;
+  let wind = response.data.wind.speed;
+  console.log(temperature, weather_description, humidity, wind); 
   temp_span.innerHTML = Math.round(temperature)+' °C';
+  desc_span.innerHTML = weather_description;
+  icon_img.src = weather_icon;
+  humidity_span.innerHTML = humidity + ' %';
+  wind_span.innerHTML = wind + ' km/h';
   console.log(response.data);
 }
 
-axios.get(apiUrl).then(showCurrentTemp);
+axios.get(apiUrl).then(showCurrentWeather);
 
 
 // Suchfunktion für Städte
@@ -49,19 +62,19 @@ function searchCity(event){
   searchBar.value = "";
   console.log(city.innerHTML);
   apiUrl = `https://api.shecodes.io/weather/v1/current?query=${request}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showCurrentTemp);
+  axios.get(apiUrl).then(showCurrentWeather);
 }
 
 let submit_btn = document.querySelector("button#search");
 submit_btn.addEventListener("click", searchCity);
 
 // Temperatur in Celsius und Fahrenheit umrechnen
-let cels_span = document.querySelector("span#cels");
+/*let cels_span = document.querySelector("span#cels");
 let fahr_span = document.querySelector("span#fahr");
 let celsCounter = 1;
-let fahrCounter = 0;
+let fahrCounter = 0;*/
 
-function convertToCelsius(){
+/*function convertToCelsius(){
   console.log("convertToCelsius() called");
   if(celsCounter < 1){
     cels_span.style.fontWeight = 500;
@@ -71,9 +84,9 @@ function convertToCelsius(){
   }
 
   celsCounter += 1;
-}
+}*/
 
-function convertToFahrenheit(){ 
+/*function convertToFahrenheit(){ 
   console.log("convertToFahrenheit() called");
   if(fahrCounter < 1){
     cels_span.style.fontWeight = 300;
@@ -82,7 +95,7 @@ function convertToFahrenheit(){
     celsCounter = 0;
   }
   fahrCounter += 1;
-}
+}*/
 
-cels_span.addEventListener("click", convertToCelsius);
-fahr_span.addEventListener("click", convertToFahrenheit);
+//cels_span.addEventListener("click", convertToCelsius);
+//fahr_span.addEventListener("click", convertToFahrenheit);
