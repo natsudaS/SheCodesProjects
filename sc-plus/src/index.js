@@ -68,34 +68,3 @@ function searchCity(event){
 let submit_btn = document.querySelector("button#search");
 submit_btn.addEventListener("click", searchCity);
 
-// Temperatur in Celsius und Fahrenheit umrechnen
-/*let cels_span = document.querySelector("span#cels");
-let fahr_span = document.querySelector("span#fahr");
-let celsCounter = 1;
-let fahrCounter = 0;*/
-
-/*function convertToCelsius(){
-  console.log("convertToCelsius() called");
-  if(celsCounter < 1){
-    cels_span.style.fontWeight = 500;
-    fahr_span.style.fontWeight = 300;
-    temp_span.innerHTML = Math.round((temp_span.innerHTML-32)*5/9);
-    fahrCounter = 0;
-  }
-
-  celsCounter += 1;
-}*/
-
-/*function convertToFahrenheit(){ 
-  console.log("convertToFahrenheit() called");
-  if(fahrCounter < 1){
-    cels_span.style.fontWeight = 300;
-    fahr_span.style.fontWeight = 500;
-    temp_span.innerHTML = Math.round(temp_span.innerHTML*9/5+32);
-    celsCounter = 0;
-  }
-  fahrCounter += 1;
-}*/
-
-//cels_span.addEventListener("click", convertToCelsius);
-//fahr_span.addEventListener("click", convertToFahrenheit);
