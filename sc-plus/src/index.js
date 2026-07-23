@@ -6,10 +6,9 @@ let icon_img = document.querySelector("img#icon");
 let humidity_span = document.querySelector("span#humidity");
 let wind_span = document.querySelector("span#wind");
 let apiKey = "373bf32o76t9d30da8a5693c914460f3";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city.innerHTML}&key=${apiKey}&units=metric`;
+let apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=${city.innerHTML}&key=${apiKey}&units=metric`;
+let apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${city.innerHTML}&key=${apiKey}&units=metric`;
 
-
-// Aktuelles Datum anzeigen
 function showCurrentDate(){
   console.log("showCurrentDate() called");
   let now = new Date();
@@ -25,7 +24,6 @@ function showCurrentDate(){
   time_span.innerHTML = `${now.getHours()}:${now.getMinutes()}`;
 }
 
-// Aktuelle Temperatur, Wetterbeschreibung und Icon anzeigen
 function showCurrentWeather(response){
   console.log("showCurrentWeather() called");
   console.log(response);
@@ -43,10 +41,6 @@ function showCurrentWeather(response){
   console.log(response.data);
 }
 
-axios.get(apiUrl).then(showCurrentWeather);
-
-
-// Suchfunktion für Städte
 function searchCity(event){
   console.log("searchCity() called");
   event.preventDefault();
@@ -58,29 +52,39 @@ function searchCity(event){
   city.innerHTML = request;
   searchBar.value = "";
   console.log(city.innerHTML);
-  apiUrl = `https://api.shecodes.io/weather/v1/current?query=${request}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showCurrentWeather);
+  apiUrlCurrent = `https://api.shecodes.io/weather/v1/current?query=${request}&key=${apiKey}&units=metric`;
+  apiUrlForecast = `https://api.shecodes.io/weather/v1/forecast?query=${request}&key=${apiKey}&units=metric`;
+  axios.get(apiUrlCurrent).then(showCurrentWeather);
+  axios.get(apiUrlForecast).then(displayForecast);
 }
 
-function displayForecast() {
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
+function displayForecast(response) {
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-      <div class="weather-forecast-day">
-        <div class="weather-forecast-date">${day}</div>
-        <div class="weather-forecast-icon">🌤️</div>
-        <div class="weather-forecast-temperatures">
-          <div class="weather-forecast-temperature">
-            <strong>15º</strong>
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5){
+      forecastHtml =
+        forecastHtml +
+        `
+        <div class="weather-forecast-day">
+          <div class="weather-forecast-date">${formatDay(day.time)}</div>
+          <img src="${day.condition.icon_url}">
+          <div class="weather-forecast-temperatures">
+            <div class="weather-forecast-temperature">
+              <strong>${Math.round(day.temperature.maximum)}º</strong>
+            </div>
+            <div class="weather-forecast-temperature">${Math.round(day.temperature.minimum)}º</div>
           </div>
-          <div class="weather-forecast-temperature">9º</div>
         </div>
-      </div>
-    `;
+      `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
@@ -91,4 +95,5 @@ let submit_btn = document.querySelector("button#search");
 submit_btn.addEventListener("click", searchCity);
 
 showCurrentDate();
-displayForecast();
+axios.get(apiUrlCurrent).then(showCurrentWeather);
+axios.get(apiUrlForecast).then(displayForecast);

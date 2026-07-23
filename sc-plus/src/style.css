@@ -10,11 +10,11 @@ body {
 .app_frame {
   background-color: white;
   border: 1px solid white;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 1px 1px 5px 5px rgb(192, 192, 192);
   margin: 0 auto;
-  max-width: 650px;
-  padding: 10px;
+  max-width: 800px;
+  padding: 30px;
 }
 
 header #search-bar {
@@ -27,9 +27,8 @@ header .search-btns {
   margin: 5px;
 }
 
-.current_section {
+.current_weather {
   margin: 30px 5px;
-  padding: 10px;
 }
 
 .weather-forecast {
@@ -40,20 +39,18 @@ header .search-btns {
 
   .weather-forecast-date {
     text-align: center;
-    color: rgba(39, 33, 66, 0.4);
     font-size: 16px;
     line-height: 20px;
     margin-bottom: 10px;
   }
 
   .weather-forecast-icon {
-    font-size: 38px;
+    font-size: 30px;
     text-align: center;
   }
 
   .weather-forecast-temperatures {
     text-align: center;
-    color: #f65282;
     margin-top: 10px;
     display: flex;
     justify-content: center;
